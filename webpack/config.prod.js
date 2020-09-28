@@ -13,8 +13,6 @@ const { CleanWebpackPlugin } = cleaner
 export default {
   ...commonConfig,
 
-  devtool: 'inline-source-map',
-
   optimization: {
     chunkIds: "named",
 
