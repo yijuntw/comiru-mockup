@@ -1,0 +1,168 @@
+@import '~constants'
+
+.AutoComplete
+  $min-height = 2.5rem
+
+  &
+    position relative
+    display flex
+    flex-wrap wrap
+    margin .5rem 0
+    padding 0 4.5rem .375rem .375em
+    width 100%
+    min-height $min-height
+    border 1px solid n30
+    border-radius 4px
+    transition .15s all ease-out
+  @media only screen and (max-width: $xsmall-layout-width)
+    padding-right 2rem
+  &:hover
+  &.is-focused
+    border-color b40
+  &.is-focused
+    box-shadow inset 0 0 1px 1px b10
+
+  .value
+    &
+      display flex
+      align-items center
+      margin .375rem .5em 0 0
+      padding-left .5em
+      max-width 100%
+      height 1.75rem
+      font-size .875rem
+      background-color n10
+      border 1px solid n20
+      border-radius 2px
+      color n60
+      transition()
+    &:hover
+      background-color lighten(n10, 50%)
+      border-color lighten(n20, 10%)
+    span
+      display inline-block
+      max-width 100%
+      ellipsis()
+  .remove
+    &
+      width 1.5em
+      height 100%
+      font-size 1.125rem
+      color transparent
+      transition()
+      textless-icon($remove, n50)
+    &::before 
+      padding-bottom .125rem
+    &::before:hover
+      color n90
+
+  input
+    &
+      flex 1
+      order 2
+      margin-top .375rem
+      padding 0
+      height 1.75rem
+      background none
+    &::placeholder
+      color n40
+    &
+    &:focus
+      border 0
+      outline 0
+
+  &.has-no-value input
+    margin-left .375rem
+  &.has-values.isnt-focused input
+    width 0
+  &.has-values input::placeholder
+    color transparent
+  
+  button.clear
+  button.submit
+    &
+      position absolute
+      top 0
+      right 0
+      height $min-height
+      font-size 1.5rem
+      opacity .5
+      transition()
+    &:disabled
+      cursor not-allowed
+    &:enabled:hover
+      opacity 1
+  button.clear
+    &
+      textless-icon($remove, n60, none)
+      right 2.5rem
+      width 2rem
+      opacity .5
+    @media only screen and (max-width: $xsmall-layout-width)
+      right 0
+    &::before
+      padding-bottom .25rem
+      font-size .875em
+    &:disabled
+      opacity 0
+  button.submit
+    &
+      textless-icon($magnifier, n60, none)
+      width 2.5rem
+    @media only screen and (max-width: $xsmall-layout-width)
+      display none
+
+  ul.candidates
+    $item-height = 2rem
+
+    &
+      position absolute
+      top 100%
+      left -1px
+      z-index 10
+      margin-top .5rem
+      width calc(100% + 2px)
+      max-height ($item-height * 10.5)
+      overflow-x hidden
+      overflow-y auto
+      overflow-y overlay
+      list-style none
+      background-color #fff
+      border 1px solid n20
+      border-radius 4px
+      transition()
+    li
+      &
+        padding 0 1em
+        height 2rem
+        ellipsis()
+        line-height @height
+        cursor pointer
+        transition()
+      &.is-hovered
+        background-color n10
+      &.placeholder
+        &
+          display flex
+          justify-content center
+          align-items center
+          flex-direction column
+          padding 2em 2em 2em 3em
+          height auto
+          font-size .75rem
+          cursor default
+          color n60
+        &::before
+          margin-bottom .5rem
+          font-size 2rem
+        &.is-loading::before
+          content $sandglass
+          flash()
+        &.has-no-result::before
+          content $facepalm
+
+  &.has-reached-limit ul.candidates
+  &:not(.is-focused) ul.candidates
+  ul.candidates:empty
+    opacity 0
+    pointer-events none

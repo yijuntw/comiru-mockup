@@ -1,0 +1,106 @@
+@import 'normalize.css'
+@import '~constants'
+@import '~keyframes'
+
+html
+body
+  box-sizing border-box
+  overflow-x hidden
+  font-family -apple-system, -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif
+  font-size 16px
+  color n80
+body 
+  margin 0 auto
+  padding 0 1rem 3rem
+  max-width $max-layout-width
+  min-height 100vh
+  background-color #fff
+  color #000
+*
+*::before
+*::after
+  box-sizing inherit
+
+a:link
+a:visited
+a:hover
+a:active
+  color inherit
+  text-decoration none
+button
+  &
+    margin 0
+    padding 0
+    font-family inherit
+    font-size inherit
+    appearance none
+    background none
+    border 0
+    cursor pointer
+  &:enabled:hover
+  &:enabled:focus
+    outline 0
+  &:disabled
+    cursor not-allowed
+  
+ul
+ol
+  margin 0
+  padding 0
+p
+  margin 0
+
+Nav.Layout
+  &
+    display flex
+    justify-content center
+    align-items center
+    margin-top 3rem
+    margin-bottom 2rem
+    height 4rem
+  .logo
+    height 2.5rem
+
+Footer.Layout
+  &
+    position fixed
+    bottom 0
+    left 50%
+    justify-content space-between
+    transform translateX(-50%)
+    display flex
+    align-items center
+    padding 0 .5rem
+    width 100%
+    height 3rem
+  @media only screen and (min-width: $max-layout-width)
+    width $max-layout-width
+  @media only screen and (max-width: $small-layout-width)
+    .BackToTop
+      &
+        width 2rem
+      &::before
+        font-size 1.5rem
+  &::before
+    content ''
+    position absolute
+    top 0
+    left 50%
+    z-index -10
+    transform translateX(-50%)
+    width 100vw
+    height 100%
+    background-color n10
+    border-top 1px solid n20
+  .BackToTop
+    height 100%
+    margin-top .25rem
+    margin-left auto
+
+  .login
+  .logout
+    &
+      margin-left .25rem
+      color n60
+    &:hover
+      text-decoration underline

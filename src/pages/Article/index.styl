@@ -1,0 +1,47 @@
+@import '~constants'
+
+Article.News
+  &
+    position relative
+    margin-bottom 5rem
+    padding 1rem
+    overflow hidden
+    font-size .875rem
+    border 1px solid n10
+    border-radius 4px
+    box-shadow 0 0 3px 0 n10
+    transition()
+
+  .player
+    margin-bottom 1rem
+  .control
+    &
+      display flex
+    p
+      margin-top .5rem
+      margin-left .5rem
+      color n40
+    button
+      &
+        width 5.5rem
+        height @width
+        font-size 5rem
+        textless-icon($play)
+      &.pause
+        textless-icon($pause)
+
+  header
+    margin-top 2rem
+    margin-bottom .5rem
+    font-size .75rem
+    color n50
+  p
+    margin-bottom .5rem
+    width 20rem
+    line-height 1.3
+    color n70
+  time
+    display flex
+    align-items center
+    font-size .75rem
+    color n40

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Comiru</title>
+
+  <style>
+    @keyframes flash {
+      0% { opacity: 0.125; }
+      50% { opacity: 0.75; }
+      100% { opacity: 0.125; }
+    }
+
+    body:not(.is-loaded)::after,
+    body:empty::after {
+      content: '\23F3';
+      position: fixed;
+      top: 0;
+      left: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100vw;
+      height: 100vh;
+      font-size: 4rem;
+      animation: flash 5s cubic-bezier(.5, 0, 1, 1) infinite;
+    }
+  </style>
+</head>
+</html>

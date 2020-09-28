@@ -1,0 +1,13 @@
+@import '~constants'
+
+.BackToTop
+  &
+    textless-icon($top)
+  &::before
+    font-size 2rem
+    opacity .8
+    transition(.5s)
+  &:disabled::before
+    opacity .25
+  &:enabled:hover::before
+    opacity 1

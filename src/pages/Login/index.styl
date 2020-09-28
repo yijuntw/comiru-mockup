@@ -1,0 +1,81 @@
+@import '~constants'
+
+.Login
+  &
+    padding 1rem 0 5rem
+    line-height 1.5
+    color #493b32
+  h1
+    &
+      font-size 1.5rem
+      line-height 1.75
+      border-bottom 1px solid n10
+    & + p
+      max-width 40em
+      font-size .875rem
+  label
+    position relative
+    display flex
+    flex-direction column
+    margin 1.5rem 0
+    max-width 32rem
+    font-weight bold
+  input
+    &
+      margin .5rem 0
+      padding 0 .5rem
+      height 3rem
+      font-family inherit
+      outline 0
+      border 1px solid n20
+      border-radius 4px
+      transition(.25s)
+    &:focus
+      border-color #16BFB7
+  .remember-me
+    &
+      margin -2rem 0 .5rem
+      flex-direction row
+      align-items center
+    input
+      &
+        position absolute
+        width 0
+        opacity 0
+      + span
+        display flex
+        align-items center
+        height 3rem
+      + span::before
+        content $check
+        display inline-flex
+        justify-content center
+        align-items center
+        width 1rem
+        height 1rem
+        line-height 1
+        margin-right .5rem
+        font-size .75rem
+        border 1px solid n20
+        border-radius 2px
+        color transparent
+        transition()
+      &:checked + span::before
+        background-color #16bfb7
+        border-color transparent
+        color #fff
+
+  button[type=submit]
+    &
+      padding 0 .5rem
+      min-width 9rem
+      height 3rem
+      background-color #16bFb7
+      border-radius (@height/2)
+      box-shadow 0px 4px 8px rgba(#000,.1)
+      color rgba(#fff, .9)
+      transition()
+    &:disabled
+      opacity .5
+    &:enabled:hover
+      background-color #13a8a1

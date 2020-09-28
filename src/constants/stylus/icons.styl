@@ -1,0 +1,37 @@
+@import './palette'
+
+textless-icon($icon, $color = n60, $position = relative)
+  &
+    if $position != none
+      position $position
+    color transparent
+    overflow hidden
+  &::before
+    content $icon
+    display flex
+    font-family 'Apple Color Emoji', -apple-system, Helvetica, Arial, sans-serif
+    justify-content center
+    align-items center
+    width 100%
+    height 100%
+    color $color
+
+$times  = '\d7'                      // ×
+$remove = $times
+$close  = $times
+
+$check = '\2713'                     // ✓
+$end   = '\1F51A'                    // 🔚
+
+$play = '\25B6'                      // ▶️
+$pause = '\23F8'                     // ⏸
+
+$backward = '\1F448'                 // 👈
+$forward  = '\1F449'                 // 👉
+$top      = '\1F51D'                 // 🔝
+
+$facepalm  = '\1F926\200D\2642\FE0F' // 🤦‍♂️
+$sandglass = '\23F3'                 // ⏳
+$bowing    = '\1F647'                // 🙇
+$compass   = '\1F9ED'                // 🧭
+$magnifier = '\1F50E'                // 🔎
