@@ -142,7 +142,7 @@ function Search() {
             compose (
               map ((a: ArticleProps) => (
                 <Link key={a.id} className="result-item" to={`/article/${a.id}`}>
-                  <Card className="Search" delay={__DEV__ ? 2000 : 400} placeholder={placeholder$}>
+                  <Card className="Search" delay={__DEV__ ? 2000 : 1000} placeholder={placeholder$}>
                     <header>{a.website}</header>
                     <p
                       dangerouslySetInnerHTML={{

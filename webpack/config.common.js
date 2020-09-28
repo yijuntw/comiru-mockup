@@ -75,6 +75,6 @@ export default {
   output: {
     path: path.resolve(__CWD__, 'dist'),
     publicPath: '/static/',
-    filename: '[name].[hash].js',
+    filename: __DEV__ ? '[name].js' : '[name].[contenthash].js',
   },
 }
