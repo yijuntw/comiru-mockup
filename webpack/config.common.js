@@ -2,8 +2,7 @@ import path from 'path'
 
 import MiniCssExtractPlugin from 'mini-css-extract-plugin'
 
-const __CWD__ = process.cwd()
-const __DEV__ = process.env.NODE_ENV === 'development'
+import { __CWD__, __DEV__, __PROD__, DIST_PATH } from '../constants.js'
 
 export default {
   mode: process.env.NODE_ENV,
@@ -73,7 +72,7 @@ export default {
   },
 
   output: {
-    path: path.resolve(__CWD__, 'dist'),
+    path: DIST_PATH,
     publicPath: '/static/',
     filename: __DEV__ ? '[name].js' : '[name].[contenthash].js',
   },
