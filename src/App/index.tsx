@@ -1,11 +1,7 @@
-import React, { memo, useEffect } from 'react'
+import React, { memo } from 'react'
 
 import { Provider } from 'react-redux'
-
-import {
-  BrowserRouter, Redirect, Route, Switch,
-  useHistory, useLocation,
-} from 'react-router-dom'
+import { BrowserRouter, Redirect, Route, Switch } from 'react-router-dom'
 
 import Layout from './Layout'
 
@@ -13,9 +9,6 @@ import Login from '@pages/Login'
 import Search from '@pages/Search'
 import Article from '@pages/Article'
 import NotFound from '@pages/NotFound'
-
-import { useSelector, shallowEqual } from 'react-redux'
-import { path } from 'ramda'
 
 import store from '@reducers'
 
