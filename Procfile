@@ -1,1 +1,1 @@
-node src/server
+yarn start
