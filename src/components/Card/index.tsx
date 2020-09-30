@@ -1,7 +1,6 @@
-import React, { memo, useEffect, useState } from 'react'
+import React, { memo, } from 'react'
 
-import { useInView } from 'react-intersection-observer'
-import { classify } from '@helpers'
+import { classify, useBeenScrolled } from '@helpers'
 
 import './index.styl'
 
@@ -15,23 +14,16 @@ export interface CardProps {
 
 function Card({
   className,
-  delay,
+  delay: delayMs,
 
   placeholder,
   children,
 }: CardProps) {
-  const [ref, inView] = useInView({ threshold: 0, delay })
-  const [BeenScrolled, setBeenScrolled] = useState(inView)
-
-  const isVisiblePlaceholder = Boolean (!BeenScrolled && placeholder)
-
-  useEffect(
-    () => void (inView && setBeenScrolled(true)),
-    [inView],
-  )
+  const [ref, beenScrolled] = useBeenScrolled ({ delay: delayMs })
+  const isVisiblePlaceholder = Boolean (!beenScrolled && placeholder)
 
   return (
-    <article ref={ref} className={classify('Card', className, isVisiblePlaceholder && 'is-placeholder')}>
+    <article ref={ref} className={classify ('Card', className, isVisiblePlaceholder && 'is-placeholder')}>
     { isVisiblePlaceholder ? placeholder : children }
     </article>
   )
