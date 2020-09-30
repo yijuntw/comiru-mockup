@@ -3,6 +3,7 @@ import { Dispatch } from 'redux'
 
 import { compose, replace, split, tail } from 'ramda'
 import qs from 'query-string'
+import { delayInDev } from '@helpers'
 
 export const UPDATE_CITIES = 'UPDATE_CITIES'
 
@@ -13,6 +14,8 @@ export function fetchCities(keyword: string = '') {
     try {
       const { data: rawCities } = await axios.get(`/api/cities?${qs.stringify({ keyword })}`)
       const cities = parseRawCities (rawCities)
+
+      await delayInDev (2000)
 
       dispatch({ type: UPDATE_CITIES, payload: cities })
     } catch (e) {

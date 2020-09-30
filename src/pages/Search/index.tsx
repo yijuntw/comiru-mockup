@@ -16,7 +16,7 @@ import { highlight } from '@helpers'
 import { Article as ArticleProps } from '@reducers/keywordArticlesMap'
 
 import { fetchCities } from '@actions/cities'
-import { fetchArticles, clearArticles } from '@actions/articles'
+import { fetchArticles } from '@actions/articles'
 
 import { __DEV__, QS_OPTIONS } from '@constants'
 
@@ -55,7 +55,6 @@ function Search() {
     async (isMounted) => {
       setIsLoadingCities (true)
       await dispatch (fetchCities ())
-      await delayInDev (2000)
 
       if (isMounted()) {
         setIsLoadingCities (false)
@@ -97,17 +96,15 @@ function Search() {
     [keywords],
   )
 
-  useAsyncDeepCompareEffect(
+  useAsyncDeepCompareEffect (
     async (isMounted) => {
-      if (keywords.length === 0 || articlesCount > 0) {
+      if (keywords.length === 0) {
         setIsSearching (false)
         return
       }
-      
-      setIsSearching (true)
 
+      setIsSearching (true)
       await dispatch (fetchArticles ({ keywords }))
-      await delayInDev (1000)
 
       if (isMounted()) {
         setIsSearching (false)

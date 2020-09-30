@@ -1,5 +1,6 @@
 import axios from 'axios'
 import qs, { StringifyOptions } from 'query-string'
+import { delayInDev } from '@helpers'
 import { Dispatch } from 'redux'
 
 import { QS_OPTIONS } from '@constants'
@@ -13,11 +14,17 @@ interface FetchArticlesParams {
 }
 
 export function fetchArticles({ keywords }: FetchArticlesParams) {
-  return async (dispatch: Dispatch) => {
+  return async (dispatch: Dispatch, getState: () => any) => {
     try {
       const keywordsText = qs.stringify(keywords, QS_OPTIONS as StringifyOptions)
-      const { data: articles } = await axios.get(`/api/articles`, { params: { keywords } })
 
+      if (getState().keywordArticlesMap[keywordsText]) {
+        return
+      }
+
+      const { data: articles = [] } = await axios.get(`/api/articles`, { params: { keywords } })
+
+      await delayInDev (2000)
       dispatch({ type: UPDATE_ARTICLES, payload: { [keywordsText]: articles } })
     } catch (e) {
       console.error(e)
